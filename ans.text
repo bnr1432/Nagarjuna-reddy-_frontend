@@ -1,0 +1,27 @@
+Explain what the simple List Component does.
+
+The Single List Item component, which is supplied the item's text and index inside the list, represents
+each item in the list displayed by this React List Component. Along with onClickHandler, which manages the
+list whenever an item in the list is clicked, we also pass isSelected, a boolean value that tells us
+whether the SingleListItem is selected or not.Clicking on the SingleListItem component will select it. A
+chosen item's backdrop colour switches from red to green.
+
+
+What problems / warnings are there with code?
+
+The problems/warnings with the code are:
+
+Intital Value in useState hook: The setSelectedIndex useState hook is being called incorrectly. It should
+be passed an initial value, but it is not.
+
+Proper useState hook destruction: Additionally, the useState hook returns two values that are out of order
+in the provided code: setSelectedIndex, a settter function that updates the state, and selectedIndex, the
+current state. When destroying an array with the syntax [selectedIndex, setSelectedIndex], the current
+state (selectedIndex) should come before the function (setSelectedIndex).
+
+
+isSelected prop: The isSelected prop of the SingleListItem component should be a boolean, but it is being
+passed the selectedIndex state value, which is a number.
+
+The items prop of the WrappedListComponent's propTypes declaration is wrong, and the shapeof property is
+not present. PropTypes.arrayOf(PropTypes.shape(text: PropTypes.string.isRequired )) should be used instead.
